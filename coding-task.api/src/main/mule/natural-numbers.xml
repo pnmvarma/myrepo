@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="natural-numbersFlow" doc:id="7415bd1f-d0cc-45f2-b613-eae24a4f5fc9" >
+		<logger level="INFO" doc:name="Logger" doc:id="eb4bc9a4-c808-485c-a63c-9fad28287a1f" message="Natural Numbers flow Started" />
+		<ee:transform doc:name="Transform Message" doc:id="41482ed5-8ac8-412a-b0dc-a9c21b761402">
+			<ee:variables>
+				<ee:set-variable variableName="number"><![CDATA[attributes.uriParams.'number']]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<ee:transform doc:name="Transform Message" doc:id="f20e8d52-c519-40f9-84ff-ba379bb0401b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+var startPoint = 1
+var endPoint = vars.number
+---
+startPoint to endPoint map $]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="4e2ec7c4-d5d4-43d9-81fe-a0ba01c6efd6" message="#[payload]"/>
+	</flow>
+</mule>

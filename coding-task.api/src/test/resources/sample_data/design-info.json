@@ -1,0 +1,18 @@
+{
+  "sampleData": {
+    "6246fcb5-4207-40d3-92de-87b4e16f847d": {
+      "vars-input1": "sample_data/json.json",
+      "vars-input2": "sample_data/json_1.json"
+    },
+    "f20e8d52-c519-40f9-84ff-ba379bb0401b": {
+      "vars-number": "sample_data/unknown_1.dwl"
+    },
+    "51fac798-ea83-4612-bae3-fc253567af73": {
+      "payload": "sample_data/unknown.dwl"
+    },
+    "ac8e15f8-86a1-4aad-8a2f-ded81cd53063": {
+      "vars-input1": "sample_data/json_2.json",
+      "vars-input2": "sample_data/json_3.json"
+    }
+  }
+}

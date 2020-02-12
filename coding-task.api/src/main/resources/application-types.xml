@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="output" format="json">
+      <types:shape format="weave" example="examples/outputex.json"><![CDATA[%dw 2.0
+
+type output = {|
+  certificate: Array<{|    id: String,     firstName: String,     LastName: String,     MarksBySubjectWise: {|      Maths: Number {"typeId": "int"},       English: Number {"typeId": "int"},       Arts: Number {"typeId": "int"},       Drawings: Number {"typeId": "int"}    |},     "LastName ": String  |}>
+|} {"example": "{\\\"certificate\\\":[{\\\"id\\\":\\\"XXX\\\",\\\"firstName\\\":\\\"XXX\\\",\\\"LastName\\\":\\\"YYY\\\",\\\"MarksBySubjectWise\\\":{\\\"Maths\\\":80,\\\"English\\\":90,\\\"Arts\\\":89,\\\"Drawings\\\":100}},{\\\"id\\\":\\\"XXX\\\",\\\"firstName\\\":\\\"XXX\\\",\\\"LastName \\\":\\\"YYY\\\",\\\"MarksBySubjectWise\\\":{\\\"Maths\\\":60,\\\"English\\\":80,\\\"Arts\\\":99,\\\"Drawings\\\":50}}]}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#9c625ba4-2588-48f7-a94f-95c21257a8da"/>
+  <types:enrichment select="#14c7d889-9406-4d71-b65d-59150e3267c3"/>
+  <types:enrichment select="#6246fcb5-4207-40d3-92de-87b4e16f847d">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:message>
+          <types:payload type="output"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

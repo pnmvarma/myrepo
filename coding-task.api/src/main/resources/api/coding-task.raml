@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: Employee API
+version: v1
+
+/employee:
+  displayName: Employee Details
+  description: 
+    Creating Employee Profiles
+  post:
+    body: 
+      application/json:
+         example:   {"employee": {
+    "id": "A007",
+    "first_name": "Jan",
+    "last_name": "Doe"
+  }}
+
+    responses: 
+      201:
+        body:  
+          application/json:
+            example:    
+              {
+                "message": "Jan Doe employee profile is created in HRMS System."
+              }  
+
+/natural-Number:
+  /{number}:
+    displayName: Natural Number 
+    description: 
+      Generate Natural Numbers
+    post: 
+      body:  
+         application/json:
+           example: | 
+                            {
+                              Output: [1,2,3,4,5,6,7,8,9,10]
+                            }

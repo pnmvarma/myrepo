@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="camelCase_stringFlow" doc:id="93c45299-9425-4654-a69f-5444d043a3e0" >
+		<ee:transform doc:name="Transform Message" doc:id="51fac798-ea83-4612-bae3-fc253567af73" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+import java!com::mulejava::StringManipulation
+output application/json
+---
+{
+  Output: StringManipulation::toCamelCase(payload.message as String)
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="4b38c454-2066-49af-b31d-e22bf2d9ffd6" message="#[payload]"/>
+	</flow>
+</mule>
